@@ -48,6 +48,7 @@ namespace TestingLib.Math
             return a * b / GCD(a, b);
         }
 
+        //делаем
         //Находит квадратный корень числа
         public double Sqrt(double n)
         {
@@ -62,6 +63,7 @@ namespace TestingLib.Math
             return System.Math.Log(n, baseN);
         }
 
+        //делаем
         //Находит корни квадратного уравнения
         public (double?, double?) SolveQuadraticEquation(double a, double b, double c)
         {
