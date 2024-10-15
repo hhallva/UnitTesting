@@ -17,14 +17,14 @@ namespace UnitTesting.hhallva
         }
 
         [Fact]
-        public void TestSqrt()
+        public void Sqrt_ReturnsCorrectValue()
         {
             double result = _calculator.Sqrt(4);
             Assert.Equal(2, result);
         }
 
         [Fact]
-        public void TestSolveQuadraticEquation()
+        public void SolveQuadraticEquation_ReturnsCorrectValue()
         {
             (double?, double?) result = _calculator.SolveQuadraticEquation(-1d, 7d, 8d);
             Assert.Equal((-1d, 8d), result);
@@ -32,15 +32,19 @@ namespace UnitTesting.hhallva
 
         [Theory]
         [InlineData(4, 2)]
-        public void InlineTest_Sqrt(double n, double expected)
+        [InlineData(16, 4)]
+        [InlineData(2,  1.41)]
+        public void Sqrt_ReturnsCorrectValues(double n, double expected)
         {
             double result = _calculator.Sqrt(n);
-            Assert.Equal(expected, result);
+            Assert.Equal(expected, result, 0.01);
         }
 
         [Theory]
         [InlineData(-1d, 7d, 8d, -1d, 8d)]
-        public void InlineTest_SolveQuadraticEquation(double a, double b, double c, double? x1, double? x2 )
+        [InlineData(1d, -4d, 5d, null, null)]
+        [InlineData(1d, 2d, 1d, -1d, -1d)]
+        public void SolveQuadraticEquation_ReturnsCorrectValues(double a, double b, double c, double? x1, double? x2 )
         {
             (double?, double?) result = _calculator.SolveQuadraticEquation(a, b, c);
 
@@ -49,13 +53,13 @@ namespace UnitTesting.hhallva
         }
 
         [Fact]
-        public void ThrowTest_Sqrt()
+        public void Sqrt_ReturnsException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.Sqrt(-1));
         }
 
         [Fact]
-        public void ThrowTest_SolveQuadraticEquation()
+        public void SolveQuadraticEquation_ReturnsException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.SolveQuadraticEquation(0, 9, 3));
         }
