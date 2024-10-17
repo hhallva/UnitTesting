@@ -31,8 +31,5 @@ namespace UnitTesting
             Assert.NotNull(result);
             mockWeatherForecastSource.Verify(repo => repo.GetForecast(It.IsAny<DateTime>()), Times.Once());
         }
-
-        [Fact]
-
     }
 }
